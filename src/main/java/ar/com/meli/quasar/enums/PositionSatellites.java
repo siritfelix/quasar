@@ -1,13 +1,13 @@
 package ar.com.meli.quasar.enums;
 
 public enum PositionSatellites {
-    /*
+    
      S1("Kenobi", (float) -500.0, (float) -200.0), S2("Skywalker", (float) 100.0,
-     (float) -100.0), S3("Sato", (float) 500.0, (float) 100.0);*/
+     (float) -100.0), S3("Sato", (float) 500.0, (float) 100.0);
      
 
-    S1("Kenobi", (float) -6.0, (float) -2.0), S2("Skywalker", (float) -1.0, (float) 7.0),
-    S3("Sato", (float) 4.0, (float) 3.0);
+    /*S1("Kenobi", (float) -6.0, (float) -2.0), S2("Skywalker", (float) -1.0, (float) 7.0),
+    S3("Sato", (float) 4.0, (float) 3.0);*/
 
     private final String name;
     private final Float x;

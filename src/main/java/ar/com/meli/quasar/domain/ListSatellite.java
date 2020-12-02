@@ -1,7 +1,5 @@
 package ar.com.meli.quasar.domain;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import ar.com.meli.quasar.dto.Satellites;

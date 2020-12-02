@@ -74,64 +74,68 @@ public class LocationImpl implements ILocation {
         if (Error.validar(r1, r2, r3, x, y).equals(true)) {
             position = new Position(x, y);
             log.info("Ubicacion calculada X = " + x + " Y = " + y);
-        } else
+        } else {
+            log.info("Ubicacion calculada pero no valida X = " + x + " Y = " + y);
             return null;
+        }
         return position;
     }
 
     @Override
     public String GetMessage(String[] m1, String[] m2, String[] m3) {
         Integer lengM, fase1 = 0, fase2 = 0, fase3 = 0;
-
-        for (int i = 0; i < m1.length; i++) {
-            for (int j = 0; j < m2.length; j++) {
-                if (!m1[i].isEmpty() && m1[i].equals(m2[j])) {
-                    fase2 = j - i;
-                    i = m1.length;
-                    j = m2.length;
+        if (m1 != null && m2 != null && m3 != null) {
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m2.length; j++) {
+                    if (!m1[i].isEmpty() && m1[i].equals(m2[j])) {
+                        fase2 = j - i;
+                        i = m1.length;
+                        j = m2.length;
+                    }
                 }
-            }
 
-        }
-        for (int i = 0; i < m1.length; i++) {
-            for (int j = 0; j < m3.length; j++) {
-                if (!m1[i].isEmpty() && m1[i].equals(m3[j])) {
-                    fase3 = j - i;
-                    i = m1.length;
-                    j = m3.length;
+            }
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m3.length; j++) {
+                    if (!m1[i].isEmpty() && m1[i].equals(m3[j])) {
+                        fase3 = j - i;
+                        i = m1.length;
+                        j = m3.length;
+                    }
                 }
+
             }
+            Integer faseM = fase1 > fase2 ? fase1 : fase2;
+            faseM = faseM > fase3 ? faseM : fase3;
+            lengM = m1.length > m2.length ? m1.length : m2.length;
+            lengM = lengM > m3.length ? lengM : m3.length;
+            String Message[] = new String[lengM + faseM];
 
-        }
-        Integer faseM = fase1 > fase2 ? fase1 : fase2;
-        faseM = faseM > fase3 ? faseM : fase3;
-        lengM = m1.length > m2.length ? m1.length : m2.length;
-        lengM = lengM > m3.length ? lengM : m3.length;
-        String Message[] = new String[lengM + faseM];
+            for (int a = 0; a < m1.length; a++) {
+                if (!m1[a].isEmpty())
+                    Message[a + faseM - fase1] = m1[a];
+            }
+            for (int a = 0; a < m2.length; a++) {
+                if (!m2[a].isEmpty())
+                    Message[a + faseM - fase2] = m2[a];
+            }
+            for (int a = 0; a < m3.length; a++) {
+                if (!m3[a].isEmpty())
+                    Message[a + faseM - fase3] = m3[a];
+            }
+            List<String> ListMessage = Arrays.asList(Message);
+            List<String> ListMessageCls = ListMessage.stream().filter(p -> p != null).collect(Collectors.toList());
+            StringBuilder MessageOut = new StringBuilder();
+            System.out.println(ListMessageCls.toString());
+            for (int i = 0; i < ListMessageCls.size(); i++) {
+                MessageOut.append(ListMessageCls.get(i));
+                if (i < ListMessageCls.size() - 1)
+                    MessageOut.append(" ");
 
-        for (int a = 0; a < m1.length; a++) {
-            if (!m1[a].isEmpty())
-                Message[a + faseM - fase1] = m1[a];
-        }
-        for (int a = 0; a < m2.length; a++) {
-            if (!m2[a].isEmpty())
-                Message[a + faseM - fase2] = m2[a];
-        }
-        for (int a = 0; a < m3.length; a++) {
-            if (!m3[a].isEmpty())
-                Message[a + faseM - fase3] = m3[a];
-        }
-        List<String> ListMessage = Arrays.asList(Message);
-        List<String> ListMessageCls = ListMessage.stream().filter(p -> p != null).collect(Collectors.toList());
-        StringBuilder MessageOut = new StringBuilder();
-        System.out.println(ListMessageCls.toString());
-        for (int i = 0; i < ListMessageCls.size(); i++) {
-            MessageOut.append(ListMessageCls.get(i));
-            if (i < ListMessageCls.size() - 1)
-                MessageOut.append(" ");
-
-        }
-        return MessageOut.toString();
+            }
+            return MessageOut.toString();
+        } else
+            return null;
     }
 
 }

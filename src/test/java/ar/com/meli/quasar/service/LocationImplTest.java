@@ -28,13 +28,13 @@ public class LocationImplTest {
         Satellite satellite;
         List<Satellite> satellites = new ArrayList<>();
         String[] message1 = { "x", "", "z" };
-        satellite = new Satellite("kenobi", (float) 7.18, message1);
+        satellite = new Satellite("kenobi", (float) 538.516, message1);
         satellites.add(satellite);
         String[] message2 = { "", "y", "z" };
-        satellite = new Satellite("skywalker", (float) 4.62, message2);
+        satellite = new Satellite("skywalker", (float) 141.42, message2);
         satellites.add(satellite);
         String[] message3 = { "x", "", "z" };
-        satellite = new Satellite("sato", (float) 9.46, message3);
+        satellite = new Satellite("sato", (float) 509.9, message3);
         satellites.add(satellite);
         Satellites satellitesDto = new Satellites();
         satellitesDto.setSatellites(satellites);
@@ -43,10 +43,10 @@ public class LocationImplTest {
     }
 
     @Test
-    public void testpsotiion() {
+    public void testposition() {
 
         PositionResponse position = iLocation.TopSecret();
-        Assertions.assertNotEquals(position, null);
+        Assertions.assertNotEquals(position.getPosition(), null);
 
     }
 

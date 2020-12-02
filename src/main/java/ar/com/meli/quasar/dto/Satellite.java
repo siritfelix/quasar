@@ -1,7 +1,5 @@
 package ar.com.meli.quasar.dto;
 
-import java.util.Objects;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
