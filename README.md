@@ -41,6 +41,18 @@ La ecuación **b**, representa la representa la circunferencia que daría desde 
 *Es preciso mencionar que a pesar de en la mayor parte de los escenarios planteados , se puedan
 obtener resultados, pero no necesariamente coherentes, en las ecuaciones la única forma de identificar un error es que el denominador sea cero, esto se pude validar, pero no solo eso, se pueden obtener valores en los cálculos pero la verificación mas veras para obtener resultados lógicos , es comparar las distancias previamente dadas, con las que nos resultaría calcular con el valor de posición obtenido, tomando un margen de error, ya que los cálculos por contener punto flotantes,  los mismo son truncados por el computador , por tomar un margen aceptable en los cálculos, se tomara 5% de error, para validar la coherencia del resultado.*
 
+## Requisitos para deployar localmente
+
+Tecnologias : Java 1.8 , Maven, cualquiern IDE, con pluggin lombok
+
+Para ejecutar el codigo, clonar del repositorio github https://github.com/siritfelix/quasar.git
+
+* Importar el proyecto en cualquier ide
+* Compilar ejecutando: mvn clean install
+
+* Levantar con: mvn spring-boot:run
+* O tomando el .jar en la carpeta target, abriendo una consola en esa carpeta  y ejecutando : java -jar quasar-0.0.1-SNAPSHOT.jar
+
 ## EndPoint Publicados
 
 Determina la ubicacion y mensaje, ingresando la distancia de los tres satelites.
