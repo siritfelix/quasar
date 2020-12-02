@@ -13,7 +13,6 @@ import ar.com.meli.quasar.domain.ListSatellite;
 import ar.com.meli.quasar.dto.PositionResponse;
 import ar.com.meli.quasar.dto.Satellite;
 import ar.com.meli.quasar.dto.Satellites;
-import ar.com.meli.quasar.enums.PositionSatellites;
 
 @SpringBootTest
 public class LocationImplTest {
@@ -48,6 +47,6 @@ public class LocationImplTest {
         PositionResponse position = iLocation.TopSecret();
         Assertions.assertNotEquals(position.getPosition(), null);
 
-    }
+    } 
 
 }
