@@ -6,9 +6,11 @@ Reto Meli por Felix Antonio Sirit Murillo siritfelix@gmail.com
 
 EL reto consiste en determinar la ubicacion de una fuente y el contenido de un mensaje oculto, se emplean 3 satelites, que proveen de la distancia a la fuente. Se conoce la ubicacion de los satelites.
 
+Para dar solución al problema , podemos identificar que se trata de una trilateración de posición,  se tienen las coordenadas de los tres satélites, y las diferentes distancias hacia la fuente, este problema se emplean cónicas, para este caso la ecuación de una circunferencia. Dados tres puntos y distancias hacia el objetivo (radio), nos lleva a tres circunferencias, donde la intercepción de las mismas, pudiera ser un solo punto coherente, que no resultaría la ubicación de la fuente. Para simplificar las ecuaciones, hacemos una traslación de coordenadas asumiendo como origen el primer satélite (kenobi), luego de los cálculos se realiza el reajuste de coordenadas para ajustar a la ubicación real y no relativa. Partiendo de la ecuación de las cónicas en este caso la circunferencia, donde el radio representaría la distancia del satélite a la fuente, el desafío es plantear un sistema de ecuaciones basado en ecuación de circunferencia. Como se pudiera notar la ecuación de circunferencia es una ecuación cuadrática, por lo que al combinar 2 de ellas, nos resultaría 2 pares de puntos de ubicación, por ello es necesario un tercer satélite para poder triangular bien la posición.
 
-Para dar solución al problema , podemos identificar que se trata de una trilateración de posición,  se tienen las coordenadas de los tres satélites, y las diferentes distancias hacia la fuente, este problema se emplean cónicas, para este caso la ecuación de una circunferencia. Dados tres puntos y distancias hacia el objetivo (radio), nos lleva a tres circunferencias, donde la intercepción de las mismas, pudiera ser un solo punto coherente, que no resultaría la ubicación de la fuente. Para simplificar las ecuaciones, hacemos una traslación de coordenadas asumiendo como origen el primer satélite (kenobi), luego de los cálculos se realiza el reajuste de coordenadas para ajustar a la ubicación real y no relativa. Partiendo de la ecuación de las cónicas en este caso la circunferencia, donde el radio representaría la distancia del satélite a la fuente, el desafío es plantear un sistema de ecuaciones basado en ecuación de circunferencia. Como se pudiera notar la ecuación de circunferencia es una ecuación cuadrática, por
-lo que al combinar 2 de ellas, nos resultaría 2 pares de puntos de ubicación, por ello es necesario un tercer satélite para poder triangular bien la posición.
+En la grafica se muestra un ejemplo coherente de ubicacion, para ello se ubico la nave imperial en el origen y las distancias desde los satellites al origen son 538.516, 141.42, 509.9.
+
+![](image/README/1606947591988.png)
 
 La ecuación **a** representa la circunferencia que daría desde el origen de coordenadas con un radio que representa la distancia entre el satélite (kanobi) y la fuente, aclarando que se hizo una traslación de
 coordenadas para tomar como referencia el primer satélite.
@@ -24,7 +26,6 @@ La ecuación **b**, representa la representa la circunferencia que daría desde 
 *Se Resuelve la ecuación (c) y se agrupa x^2 y y^2 e igualar con la ecuación (a)*
 
 ![](image/README/1606943387195.png)
-
 
 *Al final se obtiene 2 ecuaciones lineales* *Se puede aplicar cualquier método de simplificación y solución a las ecuaciones, en este caso usare el método de Cramer (determinantes )*
 
@@ -49,7 +50,6 @@ Para ejecutar el codigo, clonar del repositorio github https://github.com/siritf
 
 * Importar el proyecto en cualquier ide
 * Compilar ejecutando: mvn clean install
-
 * Levantar con: mvn spring-boot:run
 * O tomando el .jar en la carpeta target, abriendo una consola en esa carpeta  y ejecutando : java -jar quasar-0.0.1-SNAPSHOT.jar
 
@@ -90,7 +90,7 @@ Entrada
         },
         {
             "name": "sato",
-            "distance": 511,
+            "distance": 509.9,
             "message": [
                 "",
                 "",
@@ -140,7 +140,6 @@ Agrega datos de distancia y mensaje al satelite especificado como parametro sate
             ]
 }
 ```
-
 
 Determina la ubicacion y mensaje, sin valores ingresados, los mismo previamente debieron ser cargados emplando los metodos anteriormes.
 
